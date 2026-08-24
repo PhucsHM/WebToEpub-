@@ -393,6 +393,7 @@ WebToEpub is a browser extension for Firefox and Chrome that converts web novels
     <li>novelonlinefull.com</li>
     <li>novelonomicon.com</li>
     <li>novelpassion.com</li>
+    <li>novelpia.com</li>
     <li>novelplex.org</li>
     <li>novelpub.com</li>
     <li>novels.pl</li>
