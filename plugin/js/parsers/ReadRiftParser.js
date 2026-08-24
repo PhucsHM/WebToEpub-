@@ -67,24 +67,17 @@ class ReadRiftParser extends Parser {
          * ids we need to make an API request to get the chapter urls directly.
          */
         const urls = [];
+        if (!this.novelId) return urls;
 
-        if (!this.novelId) {
-            return urls;
-        }
-
-        // Now we're getting the chapter ids directly from the api so we can
-        // populate the urls
-        let apiUrl =
-            "https://readrift.net/api/v1/books/" +
-            this.novelId +
-            "/chapters/?limit=10&page=1";
+        let apiUrl = `https://readrift.net/api/v1/books/${this.novelId}/chapters/?limit=30&page=1`;
 
         while (apiUrl) {
             try {
                 apiUrl = await this.getChaptersFromApi(apiUrl, urls);
-                await util.sleep(300);
+                if (apiUrl) {
+                    await util.sleep(150 + Math.random() * 100);
+                }
             } catch (err) {
-                apiUrl = null;
                 throw new Error(
                     `ReadRiftParser failed while scanning novel's chapters: ${err.message}`,
                 );
